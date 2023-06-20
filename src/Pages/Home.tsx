@@ -1,8 +1,9 @@
 import axios from "axios"
 import { useState, useEffect } from "react"
 import CardPokemon from "../Components/CardPokemon"
-import { Container, Row } from "react-bootstrap"
+import { Container, Row, Col } from "react-bootstrap"
 import { getIdPokemon, getTypes, getNamePokemon } from "../ExportFunctions/ExportFunctions"
+import { Link } from "react-router-dom"
 import 'bootstrap/dist/css/bootstrap.min.css'
 
 
@@ -10,7 +11,7 @@ export default function App() {
   const [dataPokemon, setDataPokemon] = useState<any>([])
   async function getPokemons() {
     let endpoints = []
-    for (let i = 1; i <= 151; i++) {
+    for (let i = 1; i <= 12; i++) {
       endpoints.push(`https://pokeapi.co/api/v2/pokemon/${i}`)
     }
     axios
@@ -35,19 +36,23 @@ export default function App() {
             //Para puxar o número do Pokemon com a quantidade certa de zeros atŕas.
             //const getIdPokemon = getIdPokemonFunction(data)
             return (
-              <CardPokemon
-                key={key}
-                Name={getNamePokemon(data)}
-                Image={data['sprites']['front_default']}
-                Id={getIdPokemon(data)}
-                Types={getTypes(data)}
-                Type1={data.types[0].type.name}
-              />
+              <Col lg='2' md='4' sm='6' xs='12'>
+                <Link to={`/profile/${data.id}`} style={{textDecoration: "none"}}>
+                  <CardPokemon
+                    key={key}
+                    Name={getNamePokemon(data)}
+                    Image={data['sprites']['front_default']}
+                    Id={getIdPokemon(data)}
+                    Types={getTypes(data)}
+                    Type1={data.types[0].type.name}
+                  />
+                </Link>
+              </Col>
 
             )
           })}
         </Row>
-      </Container>
+      </Container >
     </>
   )
 }
