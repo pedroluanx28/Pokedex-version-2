@@ -11,11 +11,20 @@
     margin: 10px 0;
     text-align: center;
     transition: 0.4s;
-} .CardPokemonData:hover {
-    background-color: rgba(204, 204, 204, 0.300);
 } .CardPokemonData:hover .bodyColorType {
     top: 0%;
-    border-radius: 5px 5px 5px 5px;
+    border-radius: 5px;
+} .CardPokemonData:hover .pokemonId {
+    color: white;
+    transition: 1s;
+} .CardPokemonData:hover .pokemonNameId {
+    color: white;
+    transition: 1s;
+}
+
+.pokemonNameId {
+    position: relative;
+    font-weight: bold;
 }
 
 .pokemonId {
@@ -39,4 +48,5 @@
     padding: 5px;
     margin-bottom: 0;
     transition: 0.5s;
+    z-index: 0;
 }

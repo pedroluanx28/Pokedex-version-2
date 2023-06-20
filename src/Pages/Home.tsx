@@ -2,6 +2,7 @@ import axios from "axios"
 import { useState, useEffect } from "react"
 import CardPokemon from "../Components/CardPokemon"
 import { Container, Row } from "react-bootstrap"
+import { getIdPokemon, getTypes, getNamePokemon } from "../ExportFunctions/ExportFunctions"
 import 'bootstrap/dist/css/bootstrap.min.css'
 
 
@@ -18,6 +19,7 @@ export default function App() {
       .catch(err => console.log(err.message))
   }
 
+
   useEffect(() => {
     getPokemons()
   }, [])
@@ -27,13 +29,19 @@ export default function App() {
       <Container fluid >
         <Row>
           {dataPokemon.map((data: any, key: any) => {
+
+            //Funções para puxar dinâmicamente informações da API:
+
+            //Para puxar o número do Pokemon com a quantidade certa de zeros atŕas.
+            //const getIdPokemon = getIdPokemonFunction(data)
             return (
               <CardPokemon
                 key={key}
-                Name={data.name}
+                Name={getNamePokemon(data)}
                 Image={data['sprites']['front_default']}
-                Id={data.id < 10 ? '00'+data.id : data.id < 100 ? '0'+data.id : data.id}
-                Types={data.types.map((data: any) => data.type.name + ' ')}
+                Id={getIdPokemon(data)}
+                Types={getTypes(data)}
+                Type1={data.types[0].type.name}
               />
 
             )
