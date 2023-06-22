@@ -1,8 +1,10 @@
 import axios from "axios"
 import { useEffect, useState } from "react"
 import { useParams } from "react-router-dom"
-import { getIdPokemon } from "../ExportFunctions/ExportFunctions"
+import { getIdPokemon, getNamePokemon } from "../ExportFunctions/ExportFunctions"
+import PokemonStats from "../Components/PokemonStats"
 import '../Css/Profile.css'
+import 'bootstrap/dist/css/bootstrap.min.css'
 
 export default function Profile() {
   const [pokemonData, setPokemonData] = useState<any>([])
@@ -23,8 +25,10 @@ export default function Profile() {
 
   return (
     <div className="bodyProfile">
-      <div>{pokemonData.name} #{getIdPokemon(pokemonData)}</div>
+      <div>{getNamePokemon(pokemonData)} #{getIdPokemon(pokemonData)}</div>
       <img src={!pokemonData.sprites ? "" : pokemonData['sprites']['front_default']} />
+      <img src={!pokemonData.sprites ? "" : pokemonData['sprites']['back_default']} />
+        <PokemonStats Stats={pokemonData.stats} />
     </div>
   )
 }

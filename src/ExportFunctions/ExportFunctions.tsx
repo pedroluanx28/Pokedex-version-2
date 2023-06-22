@@ -23,7 +23,11 @@ export function getTypes(data: any) {
 
 //Função para puxar o nome de cada Pokemon com a primeira letra maíuscula.
 export function getNamePokemon(data: any) {
-    return data.name[0].toUpperCase() + data.name.substring(1)
+    if (data.name == undefined) {
+      return ' '
+    } else {
+      return data.name[0].toUpperCase() + data.name.substring(1)
+    }
 }
 
 //Função para puxar a cor do fundo do card dinâmicamento de acordo com o tipo do Pokemon.
