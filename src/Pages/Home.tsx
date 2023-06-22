@@ -11,7 +11,7 @@ export default function App() {
   const [dataPokemon, setDataPokemon] = useState<any>([])
   async function getPokemons() {
     let endpoints = []
-    for (let i = 1; i <= 100; i++) {
+    for (let i = 1; i <= 12; i++) {
       endpoints.push(`https://pokeapi.co/api/v2/pokemon/${i}`)
     }
     axios

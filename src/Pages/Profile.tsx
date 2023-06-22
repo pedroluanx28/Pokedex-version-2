@@ -1,7 +1,7 @@
 import axios from "axios"
 import { useEffect, useState } from "react"
 import { useParams } from "react-router-dom"
-import { getIdPokemon, getNamePokemon } from "../ExportFunctions/ExportFunctions"
+import { getIdPokemon, getNamePokemon, getPokemonColorByType } from "../ExportFunctions/ExportFunctions"
 import PokemonStats from "../Components/PokemonStats"
 import '../Css/Profile.css'
 import 'bootstrap/dist/css/bootstrap.min.css'
@@ -22,13 +22,27 @@ export default function Profile() {
   useEffect(() => {
     getSinglePokemon()
   }, [])
+  if (pokemonData.types == undefined) {
+    return ' '
+  } else {
+    var type1 = pokemonData.types[0].type.name
+  }
 
   return (
-    <div className="bodyProfile">
-      <div>{getNamePokemon(pokemonData)} #{getIdPokemon(pokemonData)}</div>
-      <img src={!pokemonData.sprites ? "" : pokemonData['sprites']['front_default']} />
-      <img src={!pokemonData.sprites ? "" : pokemonData['sprites']['back_default']} />
-        <PokemonStats Stats={pokemonData.stats} />
+    <div className="bodyProfile" style={{ backgroundColor: `${getPokemonColorByType(type1)}` }}>
+      <div className="containerProfile">
+        <div>{getNamePokemon(pokemonData)} #{getIdPokemon(pokemonData)}</div>
+        <img style={{width: '300px'}} src={!pokemonData.sprites ? "" : pokemonData['sprites']['front_default']} />
+        {!pokemonData.stats ? ' ' : pokemonData.stats.map((data: any, key: any) => {
+          return (
+            <PokemonStats
+              key={key}
+              Hp={data['base_stat']}
+              Name={data['stat']['name']}
+            />
+          )
+        })}
+      </div>
     </div>
   )
 }

@@ -30,6 +30,17 @@ export function getNamePokemon(data: any) {
     }
 }
 
+//Função para pegar os STATUS do Pokemon com uma certa quantidade de zeros atrás.
+export function getStatsPokemon(data: any) {
+  if (data < 10) {
+    return '00' + data
+  } else if (data < 100) {
+    return '0' + data
+  } else {
+    return data
+  }
+}
+
 //Função para puxar a cor do fundo do card dinâmicamento de acordo com o tipo do Pokemon.
 export function getPokemonColorByType(type:any) {
     if (type == "fire") {
