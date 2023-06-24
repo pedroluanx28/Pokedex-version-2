@@ -1,5 +1,5 @@
 import { ProgressBar } from "react-bootstrap"
-import { getStatsPokemon } from "../ExportFunctions/ExportFunctions"
+import { getNameStatspokemon, getStatsPokemon } from "../ExportFunctions/ExportFunctions"
 import '../Css/PokemonStats.css'
 
 interface PropsStats {
@@ -8,12 +8,12 @@ interface PropsStats {
     Key?: any
 }
 
-export default function PokemonStats({Hp, Name, Key}: PropsStats) {
+export default function PokemonStats({ Hp, Name, Key }: PropsStats) {
     return (
-        <div key={Key} className="pokemonStats" >
+        <div key={Key} className="pokemonStats">
             <p className="statPokemonName">{getStatsPokemon(Hp)}</p>
             <ProgressBar max={255} now={Hp} className="progressBar" />
-            <p className="statPokemonName">{Name}</p>
-        </div >
+            <p className="statPokemonName">{getNameStatspokemon(Name)}</p>
+        </div>
     )
 }

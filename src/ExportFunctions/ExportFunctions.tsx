@@ -41,6 +41,23 @@ export function getStatsPokemon(data: any) {
   }
 }
 
+//Função que retorna o nome do STATUS do Pokemon com primeira letra maíuscula.
+export function getNameStatspokemon(stat: string) {
+  if (stat == "hp") {
+    return "Vida"
+  } else if (stat == "defense") {
+    return "Defesa"
+  } else if (stat == "attack") {
+    return "Ataque"
+  } else if (stat == "special-attack") {
+    return "Ataque Especial"
+  } else if (stat == "special-defense") {
+    return "Defesa Especial"
+  } else if (stat == "speed") {
+    return "Velocidade"
+  }
+}
+
 //Função para puxar a cor do fundo do card dinâmicamento de acordo com o tipo do Pokemon.
 export function getPokemonColorByType(type:any) {
     if (type == "fire") {
@@ -80,4 +97,45 @@ export function getPokemonColorByType(type:any) {
     } else if (type == "steel") {
       return "#B7B9D0"
     }
+}
+
+//Função para puxar o tipo do Pokemon em PORTUGUÊS.
+export function getPokemonTypeInPortuguese(type:string) {
+  if (type == "fire") {
+      return "Fogo"
+  } else if (type == "water") {
+      return "Água"
+  } else if (type == "grass") {
+    return "Grama"
+  } else if (type == "bug") {
+    return "Inseto"
+  } else if (type == "dark") {
+    return "Sombra"
+  } else if (type == "dragon") {
+    return "Dragão"
+  } else if (type == "electric") {
+    return "Elétrico"
+  } else if (type == "fairy") {
+    return "Fada"
+  } else if (type == "fighting") {
+    return "Lutador"
+  } else if (type == "flying") {
+    return "Voador"
+  } else if (type == "ghost") {
+    return "Fantasma"
+  } else if (type == "normal") {
+    return "Normal"
+  } else if (type == "ground") {
+    return "Areia"
+  } else if (type == "ice") {
+    return "Gelo"
+  } else if (type == "poison") {
+    return "Veneno"
+  } else if (type == "psychic") {
+    return "Písiquico"
+  } else if (type == "rock") {
+    return "Pedra"
+  } else if (type == "steel") {
+    return "Ferro"
+  }
 } 
