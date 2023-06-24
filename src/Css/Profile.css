@@ -39,6 +39,7 @@
     font-weight: bold;
     color: white;
     cursor: default;
+    width: 100px;
 }
 
 .badgesContainer {
@@ -53,17 +54,13 @@
 }
 
 .pokemonStatsContainer {
-    margin: 20px 0;
-    text-align: center;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    width: 100%;
 }
 
 .dataPokemonProfileContainer {
     display: flex;
-    flex-direction: row;
     justify-content: space-between;
-    align-items: center;
-}
-
-.pokemonInfosContainer {
-    width: 100%;
 }

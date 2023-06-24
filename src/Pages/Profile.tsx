@@ -1,9 +1,10 @@
 import axios from "axios"
 import { useEffect, useState } from "react"
 import { useParams } from "react-router-dom"
-import { getIdPokemon, getNamePokemon, getPokemonColorByType, getPokemonTypeInPortuguese } from "../ExportFunctions/ExportFunctions"
-import PokemonStats from "../Components/PokemonStats"
+import { getIdPokemon, getNamePokemon, getPokemonColorByType, getPokemonTypeInPortuguese, getWeightAndHeight } from "../ExportFunctions/ExportFunctions"
+import { Divider } from "@mui/material"
 import '../Css/Profile.css'
+import '../Css/PokemonStats.css'
 import 'bootstrap/dist/css/bootstrap.min.css'
 
 export default function Profile() {
@@ -43,23 +44,11 @@ export default function Profile() {
               )
             })}
           </div>
-          <div className="dataPokemonProfileContainer">
-            <div className="pokemonStatsContainer">
-              <h1>Stats</h1>
-              {!pokemonData.stats ? ' ' : pokemonData.stats.map((data: any, key: any) => {
-                return (
-                  <PokemonStats
-                    key={key}
-                    Hp={data['base_stat']}
-                    Name={data['stat']['name']}
-                  />
-                )
-              })}
-            </div>
+          <Divider style={{ border: '1px solid black', margin: '15px 0' }} />
             <div className="pokemonInfosContainer">
-              ads
+              <p>{getWeightAndHeight(pokemonData.height) + "m"}</p>
+              <p>{getWeightAndHeight(pokemonData.weight) + "Kg"}</p>
             </div>
-          </div>
         </div>
       </div>
     </div>

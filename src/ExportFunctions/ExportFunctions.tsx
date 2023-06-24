@@ -58,6 +58,15 @@ export function getNameStatspokemon(stat: string) {
   }
 }
 
+//Função para retornar a altura e o peso do Pokémon em Metros e Quilos.
+export function getWeightAndHeight(data: any) {
+  if (!data) {
+    return ' '
+  } else {
+    return data / 10
+  }
+} 
+
 //Função para puxar a cor do fundo do card dinâmicamento de acordo com o tipo do Pokemon.
 export function getPokemonColorByType(type:any) {
     if (type == "fire") {
