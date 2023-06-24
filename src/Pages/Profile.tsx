@@ -2,7 +2,9 @@ import axios from "axios"
 import { useEffect, useState } from "react"
 import { useParams } from "react-router-dom"
 import { getIdPokemon, getNamePokemon, getPokemonColorByType, getPokemonTypeInPortuguese, getWeightAndHeight } from "../ExportFunctions/ExportFunctions"
+import InfosPokemonCard from "../Components/InfosPokemonCard"
 import { Divider } from "@mui/material"
+import { Badge } from "react-bootstrap"
 import '../Css/Profile.css'
 import '../Css/PokemonStats.css'
 import 'bootstrap/dist/css/bootstrap.min.css'
@@ -44,11 +46,17 @@ export default function Profile() {
               )
             })}
           </div>
-          <Divider style={{ border: '1px solid black', margin: '15px 0' }} />
-            <div className="pokemonInfosContainer">
-              <p>{getWeightAndHeight(pokemonData.height) + "m"}</p>
-              <p>{getWeightAndHeight(pokemonData.weight) + "Kg"}</p>
-            </div>
+          <Divider style={{ margin: '15px 0' }} role="presentation" component="h4" >Infos</Divider>
+          <div className="pokemonInfosContainer" style={{ backgroundColor: `${getPokemonColorByType(type1)}` }}>
+            <InfosPokemonCard
+              Data={pokemonData}
+            />
+          </div>
+          <Divider style={{ margin: '15px 0' }} role="presentation" component="h4" >Ataques Possíveis</Divider>
+          {pokemonData.moves.map((a:any) => {
+            return <div style={{backgroundColor: `${getPokemonColorByType(type1)}`}} className="possibleAbilities" >{a.move.name}</div>
+          })}
+          <Divider style={{ margin: '15px 0' }} role="presentation" component="h4" >Outras Versões</Divider>
         </div>
       </div>
     </div>

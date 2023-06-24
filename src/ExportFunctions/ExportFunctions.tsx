@@ -65,7 +65,18 @@ export function getWeightAndHeight(data: any) {
   } else {
     return data / 10
   }
-} 
+}
+
+//Função para deixar o nome das habilidades do pokemon arrumadas.
+export function getAbilitiesPokemon(data: any) {
+  if (data.abilities[2]) {
+    return data.abilities[0].ability.name + ' | ' + data.abilities[1].ability.name + ' | ' + data.abilities[2].ability.name
+  } else if (data.abilities[1]) {
+    return data.abilities[0].ability.name + ' | ' + data.abilities[1].ability.name
+  } else {
+    return data.abilities[0].ability.name
+  }
+}
 
 //Função para puxar a cor do fundo do card dinâmicamento de acordo com o tipo do Pokemon.
 export function getPokemonColorByType(type:any) {

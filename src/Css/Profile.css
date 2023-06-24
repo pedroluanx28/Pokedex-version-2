@@ -1,8 +1,8 @@
 .bodyProfile {
     text-align: center;
-    padding: 0 20px;
-    background-color: red;
-    height: 100vh;
+    padding: 0px 20px 20px 20px;
+    background-color: white;
+    height: 100%;
 }
 
 .containerProfile {
@@ -48,16 +48,40 @@
     align-items: center;
 }
 
-.pokemonStatsName {
-    width: 100%;
-    text-align: end;
+.pokemonInfosContainer {
+    background-color: orange;
+    width: 500px;
+    margin: auto;
+    border-radius: 15px;
+    padding: 10px;
+    color: white;
+    font-weight: bolder;
+    box-shadow: 1px 1px 5px rgba(0, 0, 0, 0.500);
+    text-shadow: 1px 1px 5px rgba(0, 0, 0, 0.500);
 }
 
-.pokemonStatsContainer {
-    display: flex;
-    flex-direction: row;
-    justify-content: center;
-    width: 100%;
+.possibleAbilities {
+    display: inline-block;
+    padding: 1px 10px;
+    margin: 5px 5px;
+    border: none;
+    border-radius: 15px;
+    font-weight: bolder;
+    cursor: default;
+    color: white;
+    box-shadow: 1px 1px 3px rgba(0, 0, 0, 0.500);
+}
+
+.heightAndWeight {
+    margin: 0;
+    padding: 0;
+    font-weight: 100;
+    color: azure;
+}
+
+.heightAndWeightTitle {
+    margin: 0;
+    padding: 0;
 }
 
 .dataPokemonProfileContainer {
