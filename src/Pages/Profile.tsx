@@ -47,6 +47,11 @@ export default function Profile() {
               )
             })}
           </div>
+          <Divider style={{ margin: '15px 0' }} role="presentation" component="h4" >Informações</Divider>
+          <InfosPokemonCard
+            Data={pokemonData}
+            Color={type1}
+          />
           <Divider style={{ margin: '15px 0' }} role="presentation" component="h4" >Status</Divider>
           {pokemonData.stats.map((stat: any, key: any) => {
             return (
@@ -58,20 +63,16 @@ export default function Profile() {
               />
             )
           })}
-          <Divider style={{ margin: '15px 0' }} role="presentation" component="h4" >Infos</Divider>
-          <div className="pokemonInfosContainer" style={{ backgroundColor: `${getPokemonColorByType(type1)}` }}>
-            <InfosPokemonCard
-              Data={pokemonData}
-            />
-          </div>
           <Divider style={{ margin: '15px 0' }} role="presentation" component="h4" >Ataques Possíveis</Divider>
-          {pokemonData.moves.map((a: any) => {
-            return <div style={{ backgroundColor: `${getPokemonColorByType(type1)}` }} className="possibleAbilities" >{a.move.name}</div>
-          })}
+          <div className="abillitiesContainer">
+            {pokemonData.moves.map((a: any) => {
+              return <div style={{ backgroundColor: `${getPokemonColorByType(type1)}` }} className="possibleAbilities" >{a.move.name}</div>
+            })}
+          </div>
           <Divider style={{ margin: '15px 0' }} role="presentation" component="h4" >Outras Versões</Divider>
-          <Container fluid style={{textAlign: 'center'}}>
+          <Container fluid style={{ textAlign: 'center' }}>
             <Row>
-                {getOthersVersionPokemons(pokemonData, getPokemonColorByType(type1))}
+              {getOthersVersionPokemons(pokemonData, getPokemonColorByType(type1))}
             </Row>
           </Container>
 

@@ -71,6 +71,8 @@
     color: white;
     box-shadow: 1px 1px 5px rgba(0, 0, 0, 0.500);
     transition: 0.5s;
+    width: 200px;
+    height: 30px;
 }.possibleAbilities:hover {
     transform: scale(0.9);
 }
@@ -113,4 +115,8 @@
 
 .alertOthersForms {
     font-weight: bolder;
+}
+
+.abillitiesContainer {
+    text-align: center;
 }

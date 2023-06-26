@@ -1,33 +1,17 @@
-import { getAbilitiesPokemon, getWeightAndHeight } from "../ExportFunctions/ExportFunctions"
-import { Container, Row, Col } from 'react-bootstrap'
-import height from '../Images/height.png'
-import weight from '../Images/weight.png'
+import { getPokemonColorByType, getWeightAndHeight } from "../ExportFunctions/ExportFunctions"
 
-export default function InfosPokemonCard({ Data }: any) {
+export default function InfosPokemonCard({ Data, Color }: any) {
     return (
         <>
-            <Container>
-                <Row>
-                    <Col lg="4" md='4' sm='4' xs='4'>
-                        <div>
-                            <p className='heightAndWeightTitle'>Altura</p>
-                            <p className="heightAndWeight">{getWeightAndHeight(Data.height) + "m"}</p>
-                        </div>
-                    </Col>
-                    <Col lg="4" md='4' sm='4' xs='4'>
-                        <div>
-                            <p className="heightAndWeightTitle">Peso</p>
-                            <p className="heightAndWeight">{getWeightAndHeight(Data.weight) + "kg"}</p>
-                        </div>
-                    </Col>
-                    <Col lg="4" md='4' sm='4' xs='4'>
-                        <div>
-                            <p className="heightAndWeightTitle">Habilidades</p>
-                            <p className="heightAndWeight">{getAbilitiesPokemon(Data)}</p>
-                        </div>
-                    </Col>
-                </Row>
-            </Container>
+             <div className='statContainer' style={{backgroundColor: `${getPokemonColorByType(Color)}`}}>
+                <p className='nameStat'>Altura</p>
+                <p className='baseStat'>{getWeightAndHeight(Data.height) + 'm'}</p>
+            </div>
+
+            <div className='statContainer' style={{backgroundColor: `${getPokemonColorByType(Color)}`}}>
+                <p className='nameStat'>Peso</p>
+                <p className='baseStat'>{getWeightAndHeight(Data.weight) + 'kg'}</p>
+            </div>
         </>
     )
 }
