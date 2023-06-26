@@ -1,19 +1,21 @@
-import { ProgressBar } from "react-bootstrap"
-import { getNameStatspokemon, getStatsPokemon } from "../ExportFunctions/ExportFunctions"
+import { Container, Row, Col } from 'react-bootstrap'
 import '../Css/PokemonStats.css'
+import { getNameStatspokemon, getPokemonColorByType } from '../ExportFunctions/ExportFunctions'
 
 interface PropsStats {
     Hp: number,
     Name: string,
-    Key?: any
+    Key?: any,
+    Color: string
 }
 
-export default function PokemonStats({ Hp, Name, Key }: PropsStats) {
+export default function PokemonStats({ Hp, Name, Key, Color }: PropsStats) {
     return (
-        <div key={Key} className="pokemonStats">
-            <p className="statPokemonName">{getStatsPokemon(Hp)}</p>
-            <ProgressBar max={255} now={Hp} className="progressBar" />
-            <p className="statPokemonName">{getNameStatspokemon(Name)}</p>
-        </div>
+        <>
+            <div key={Key} className='statContainer' style={{backgroundColor: `${getPokemonColorByType(Color)}`}}>
+                <p className='nameStat'>{getNameStatspokemon(Name)}</p>
+                <p className='baseStat'>{Hp}</p>
+            </div>
+        </>
     )
 }

@@ -1,13 +1,14 @@
 import axios from "axios"
 import { useEffect, useState } from "react"
 import { useParams } from "react-router-dom"
-import { getIdPokemon, getNamePokemon, getPokemonColorByType, getPokemonTypeInPortuguese, getWeightAndHeight } from "../ExportFunctions/ExportFunctions"
+import { getIdPokemon, getNamePokemon, getOthersVersionPokemons, getPokemonColorByType, getPokemonTypeInPortuguese, getStatsPokemon } from "../ExportFunctions/ExportFunctions"
 import InfosPokemonCard from "../Components/InfosPokemonCard"
 import { Divider } from "@mui/material"
-import { Badge } from "react-bootstrap"
+import { Container, Row } from 'react-bootstrap'
 import '../Css/Profile.css'
 import '../Css/PokemonStats.css'
 import 'bootstrap/dist/css/bootstrap.min.css'
+import PokemonStats from "../Components/PokemonStats"
 
 export default function Profile() {
   const [pokemonData, setPokemonData] = useState<any>([])
@@ -46,6 +47,17 @@ export default function Profile() {
               )
             })}
           </div>
+          <Divider style={{ margin: '15px 0' }} role="presentation" component="h4" >Status</Divider>
+          {pokemonData.stats.map((stat: any, key: any) => {
+            return (
+              <PokemonStats
+                Name={stat.stat.name}
+                Hp={getStatsPokemon(stat.base_stat)}
+                Key={key}
+                Color={type1}
+              />
+            )
+          })}
           <Divider style={{ margin: '15px 0' }} role="presentation" component="h4" >Infos</Divider>
           <div className="pokemonInfosContainer" style={{ backgroundColor: `${getPokemonColorByType(type1)}` }}>
             <InfosPokemonCard
@@ -53,10 +65,16 @@ export default function Profile() {
             />
           </div>
           <Divider style={{ margin: '15px 0' }} role="presentation" component="h4" >Ataques Possíveis</Divider>
-          {pokemonData.moves.map((a:any) => {
-            return <div style={{backgroundColor: `${getPokemonColorByType(type1)}`}} className="possibleAbilities" >{a.move.name}</div>
+          {pokemonData.moves.map((a: any) => {
+            return <div style={{ backgroundColor: `${getPokemonColorByType(type1)}` }} className="possibleAbilities" >{a.move.name}</div>
           })}
           <Divider style={{ margin: '15px 0' }} role="presentation" component="h4" >Outras Versões</Divider>
+          <Container fluid style={{textAlign: 'center'}}>
+            <Row>
+                {getOthersVersionPokemons(pokemonData, getPokemonColorByType(type1))}
+            </Row>
+          </Container>
+
         </div>
       </div>
     </div>

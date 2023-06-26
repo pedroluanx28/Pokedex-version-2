@@ -8,7 +8,7 @@
 .containerProfile {
     background-color: white;
     border-radius: 13px;
-    padding: 10px 15px;
+    padding: 15px;
     box-shadow: 2px 2px 15px rgba(0, 0, 0, 0.400);
 }
 
@@ -69,7 +69,10 @@
     font-weight: bolder;
     cursor: default;
     color: white;
-    box-shadow: 1px 1px 3px rgba(0, 0, 0, 0.500);
+    box-shadow: 1px 1px 5px rgba(0, 0, 0, 0.500);
+    transition: 0.5s;
+}.possibleAbilities:hover {
+    transform: scale(0.9);
 }
 
 .heightAndWeight {
@@ -87,4 +90,27 @@
 .dataPokemonProfileContainer {
     display: flex;
     justify-content: space-between;
+}
+
+.othersVersionsContainer {
+    border-radius: 15px;
+    box-shadow: 1px 1px 5px rgba(0, 0, 0, 0.500);
+    padding: 10px;
+    margin: 15px 0;
+}
+
+.titleOtherVersion {
+    font-weight: bolder;
+    color: #fff;
+    text-shadow: 1px 1px 5px rgba(0, 0, 0, 0.500);
+    font-size: 1.8em;
+}
+
+.imageOthersVersions {
+    width: 200px;
+    filter: drop-shadow(5px 5px 5px rgba(0, 0, 0, 0.700));
+}
+
+.alertOthersForms {
+    font-weight: bolder;
 }
