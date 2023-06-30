@@ -1,0 +1,15 @@
+.seacrhBar {
+    background-color: rgb(61, 61, 61);
+    width: 100%;
+    padding: 0px 30px;
+    margin-bottom: 10px;
+    box-shadow: 0px 5px 10px rgba(0, 0, 0, 0.5);
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.logoPokemon {
+    width: 150px;
+}
