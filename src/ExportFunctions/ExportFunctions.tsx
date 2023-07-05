@@ -1,4 +1,5 @@
 import { Col } from "react-bootstrap"
+type PropsTypes = 'fire' | 'water' | 'bug' | 'flying' | 'grass' | 'poison' | 'steel' | 'fairy' | 'ghost' | 'normal' | 'dark' | 'electric' | 'fighting' | 'dragon' | 'ground' | 'ice' | 'psychic' | 'rock'
 
 //Função para puxar o ID do Pokemon com uma respectiva quantidade de zeros atŕas.
 export function getIdPokemon(data: any) {
@@ -121,83 +122,53 @@ export function getOthersVersionPokemons(data: any, color: any) {
 }
 
 //Função para puxar a cor do fundo do card dinâmicamento de acordo com o tipo do Pokemon.
-export function getPokemonColorByType(type: any) {
-  if (type == "fire") {
-    return "#F57D31"
-  } else if (type == "water") {
-    return "#6493EB"
-  } else if (type == "grass") {
-    return "#74CB48"
-  } else if (type == "bug") {
-    return "#A7B723"
-  } else if (type == "dark") {
-    return "#75574C"
-  } else if (type == "dragon") {
-    return "#7037FF"
-  } else if (type == "electric") {
-    return "#F9CF30"
-  } else if (type == "fairy") {
-    return "#E69EAC"
-  } else if (type == "fighting") {
-    return "#C12239"
-  } else if (type == "flying") {
-    return "#A891EC"
-  } else if (type == "ghost") {
-    return "#70559B"
-  } else if (type == "normal") {
-    return "#AAA67F"
-  } else if (type == "ground") {
-    return "#DEC16B"
-  } else if (type == "ice") {
-    return "#9AD6DF"
-  } else if (type == "poison") {
-    return "#A43E9E"
-  } else if (type == "psychic") {
-    return "#FB5584"
-  } else if (type == "rock") {
-    return "#B69E31"
-  } else if (type == "steel") {
-    return "#B7B9D0"
+export function getPokemonColorByType(type: PropsTypes) {
+  const colors = {
+    fire: '#F57D31',
+    water: '#6493EB',
+    bug: '#A7B723',
+    grass: '#74CB48',
+    dark: '#75574C',
+    ground: '#DEC16B',
+    fighting: '#C12239',
+    dragon: '#75574C',
+    electric: '#F9CF30',
+    normal: '#AAA67F',
+    ice: '#9AD6DF',
+    poison: '#A43E9E',
+    fairy: '#E69EAC',
+    steel: '#B7B9D0',
+    rock: '#B69E31',
+    psychic: '#FB5584',
+    ghost: '#70559B',
+    flying: '#A891EC'
   }
+
+  return colors[type] ?? null
 }
 
 //Função para puxar o tipo do Pokemon em PORTUGUÊS.
-export function getPokemonTypeInPortuguese(type: string) {
-  if (type == "fire") {
-    return "Fogo"
-  } else if (type == "water") {
-    return "Água"
-  } else if (type == "grass") {
-    return "Grama"
-  } else if (type == "bug") {
-    return "Inseto"
-  } else if (type == "dark") {
-    return "Sombra"
-  } else if (type == "dragon") {
-    return "Dragão"
-  } else if (type == "electric") {
-    return "Elétrico"
-  } else if (type == "fairy") {
-    return "Fada"
-  } else if (type == "fighting") {
-    return "Lutador"
-  } else if (type == "flying") {
-    return "Voador"
-  } else if (type == "ghost") {
-    return "Fantasma"
-  } else if (type == "normal") {
-    return "Normal"
-  } else if (type == "ground") {
-    return "Areia"
-  } else if (type == "ice") {
-    return "Gelo"
-  } else if (type == "poison") {
-    return "Veneno"
-  } else if (type == "psychic") {
-    return "Písiquico"
-  } else if (type == "rock") {
-    return "Pedra"
-  } else if (type == "steel") {
-    return "Ferro"
+export function getPokemonTypeInPortuguese(type: PropsTypes) {
+  const names = {
+    fire: 'Fogo',
+    water: 'Água',
+    bug: 'Inseto',
+    grass: 'Grama',
+    dark: 'Sombra',
+    ground: 'Areia',
+    fighting: 'Lutador',
+    dragon: 'Dragão',
+    electric: 'Elétrico',
+    normal: 'Normal',
+    ice: 'Gelo',
+    poison: 'Veneno',
+    fairy: 'Fada',
+    steel: 'Ferro',
+    rock: 'Pedra',
+    psychic: 'Psíquico',
+    ghost: 'Fantasma',
+    flying: 'Voador'
   }
+
+  return names[type] ?? null
 } 
