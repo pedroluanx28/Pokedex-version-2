@@ -9,33 +9,24 @@ import {
 } from "../ExportFunctions/ExportFunctions"
 import { Link } from "react-router-dom"
 import PokemonLogo from '../Images/pokemonLogo.png'
-import Pagination from "../Components/Pagination"
 import 'bootstrap/dist/css/bootstrap.min.css'
 import '../Css/CardPokemon.css'
 import '../Css/SearchBar.css'
 
+interface PropsSearch {
+  name: string,
+  id: string
+}
+
 
 export default function App() {
-
-  //Paginação:
-  const itemsPerPage = 6
-  const [pages, setPages] = useState(0)
-  const [totalPages, setTotalPages] = useState(0)
-
-  const onLeftClick = () => {
-    console.log('Anterior')
-  }
-
-  const onRightClick = () => {
-    console.log('Proximo')
-  }
 
   //Get para API
   const [dataPokemon, setDataPokemon] = useState<any>([])
   const [search, setSearch] = useState('')
   async function getPokemons() {
     let endpoints = []
-    for (var i = 1; i <= 12; i++) {
+    for (var i = 1; i <= 1008; i++) {
       endpoints.push(`https://pokeapi.co/api/v2/pokemon/${i}
       `)
     }
@@ -46,14 +37,13 @@ export default function App() {
   }
 
 
-  const cardFilter = dataPokemon.filter((card: any) =>
+  const cardFilter = dataPokemon.filter((card: PropsSearch) =>
     card.name.includes(search.toLowerCase()) ||
     card.id.toString().includes(search.toString())
   )
 
   useEffect(() => {
     getPokemons()
-    setTotalPages(Math.ceil(dataPokemon.length / itemsPerPage))
   }, [])
 
   return (
@@ -101,12 +91,6 @@ export default function App() {
           })}
         </Row>
       </Container >
-      <Pagination
-        page={pages + 1}
-        totalPages={totalPages}
-        onLeftClick={onLeftClick}
-        onRightClick={onRightClick}
-      />
     </>
   )
 }

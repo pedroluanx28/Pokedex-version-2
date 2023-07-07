@@ -1,11 +1,15 @@
 import { Col } from "react-bootstrap"
 type PropsTypes = 'fire' | 'water' | 'bug' | 'flying' | 'grass' | 'poison' | 'steel' | 'fairy' | 'ghost' | 'normal' | 'dark' | 'electric' | 'fighting' | 'dragon' | 'ground' | 'ice' | 'psychic' | 'rock'
 
+type PropsStats = 'speed' | 'defense' | 'hp' | 'attack' | 'special-attack' | 'special-defense'
+
 //Função para puxar o ID do Pokemon com uma respectiva quantidade de zeros atŕas.
 export function getIdPokemon(data: any) {
   if (data.id < 10) {
-    return "00" + data.id
+    return "000" + data.id
   } else if (data.id < 100) {
+    return "00" + data.id
+  } else if (data.id < 1000) {
     return "0" + data.id
   } else {
     return data.id
@@ -44,20 +48,17 @@ export function getStatsPokemon(data: any) {
 }
 
 //Função que retorna o nome do STATUS do Pokemon com primeira letra maíuscula.
-export function getNameStatspokemon(stat: any) {
-  if (stat == "hp") {
-    return "Vida"
-  } else if (stat == "defense") {
-    return "Defesa"
-  } else if (stat == "attack") {
-    return "Ataque"
-  } else if (stat == "special-attack") {
-    return "Ataque E."
-  } else if (stat == "special-defense") {
-    return "Defesa E."
-  } else if (stat == "speed") {
-    return "Velocidade"
+export function getNameStatspokemon(stat: PropsStats) {
+  const stats = {
+    attack: 'Ataque',
+    defense: 'Defesa',
+    hp: 'Vida',
+    speed: 'Velocidade',
+    'special-attack': 'Ataque .E',
+    'special-defense': 'Defesa .E'
   }
+
+  return stats[stat] ?? null
 }
 
 //Função para retornar a altura e o peso do Pokémon em Metros e Quilos.

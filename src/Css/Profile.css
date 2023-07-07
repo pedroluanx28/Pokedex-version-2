@@ -18,7 +18,7 @@
 }
 
 .nameIdPokemonProfile {
-    padding: 20px 0;
+    padding: 0 0 20px 0;
     font-size: 1.7em;
     font-weight: bolder;
     color: white;
@@ -119,4 +119,19 @@
 
 .abillitiesContainer {
     text-align: center;
+}
+
+.houseIcon {
+    width: 100%;
+    display: inline-block;
+    text-align: left;
+    font-size: 1.5em;
+}
+
+.icon {
+    transition: 0.2s;
+    cursor: pointer;
+    color: white;
+}.icon:hover {
+    transform: scale(1.4);
 }
