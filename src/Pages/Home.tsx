@@ -26,7 +26,7 @@ export default function App() {
   const [search, setSearch] = useState('')
   async function getPokemons() {
     let endpoints = []
-    for (var i = 1; i <= 1008; i++) {
+    for (var i = 1; i <= 151; i++) {
       endpoints.push(`https://pokeapi.co/api/v2/pokemon/${i}
       `)
     }
