@@ -68,12 +68,12 @@
     border-radius: 15px;
     font-weight: bolder;
     cursor: default;
-    color: white;
-    box-shadow: 1px 1px 5px rgba(0, 0, 0, 0.500);
+    box-shadow: 1px 1px 3px rgba(0, 0, 0, 0.500);
     transition: 0.5s;
-    width: 200px;
-    height: 30px;
-}.possibleAbilities:hover {
+    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.100);
+}
+
+.possibleAbilities:hover {
     transform: scale(0.9);
 }
 
@@ -99,11 +99,27 @@
     box-shadow: 1px 1px 5px rgba(0, 0, 0, 0.500);
     padding: 10px;
     margin: 15px 0;
+    position: relative;
+}
+
+.othersVersionsContainer::before {
+    content: ' ';
+    display: block;
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-image: url('/public/pokemon.svg');
+    background-position: center center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    opacity: 0.2;
 }
 
 .titleOtherVersion {
     font-weight: bolder;
-    color: #fff;
+    color: #000000c2;
     text-shadow: 1px 1px 5px rgba(0, 0, 0, 0.500);
     font-size: 1.8em;
 }
@@ -132,6 +148,8 @@
     transition: 0.2s;
     cursor: pointer;
     color: white;
-}.icon:hover {
+}
+
+.icon:hover {
     transform: scale(1.4);
 }

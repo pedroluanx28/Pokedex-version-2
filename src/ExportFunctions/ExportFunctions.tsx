@@ -1,7 +1,8 @@
 import { Col } from "react-bootstrap"
+
 type PropsTypes = 'fire' | 'water' | 'bug' | 'flying' | 'grass' | 'poison' | 'steel' | 'fairy' | 'ghost' | 'normal' | 'dark' | 'electric' | 'fighting' | 'dragon' | 'ground' | 'ice' | 'psychic' | 'rock'
 
-type PropsStats = 'speed' | 'defense' | 'hp' | 'attack' | 'special-attack' | 'special-defense'
+export type PropsStats = 'speed' | 'defense' | 'hp' | 'attack' | 'special-attack' | 'special-defense'
 
 //Função para puxar o ID do Pokemon com uma respectiva quantidade de zeros atŕas.
 export function getIdPokemon(data: any) {
@@ -89,9 +90,13 @@ export function getOthersVersionPokemons(data: any, color: any) {
     if (!data.sprites.front_female) {
       return (
         <Col>
-          <div className="othersVersionsContainer" style={{ backgroundColor: `${color}`, width: '500px', margin: 'auto' }}>
+          <div className="othersVersionsContainer" style={{
+            border: `2px solid ${color}`,
+            width: '400px',
+            margin: 'auto',
+          }}>
             <h5 className="titleOtherVersion">Shiny</h5>
-            <img className='imageOthersVersions' src={`${data.sprites.front_shiny}`} />
+            <img className='imageOthersVersions' src={`${data?.sprites?.front_shiny}`} />
           </div>
         </Col>
       )

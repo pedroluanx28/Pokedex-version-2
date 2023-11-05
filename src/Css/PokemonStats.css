@@ -1,12 +1,12 @@
 .statContainer {
     display: inline-block;
+    background-color: transparent;
     border-radius: 10px;
     margin: 5px 10px;
     padding: 10px;
     width: 100px;
     height: 90px;
     box-shadow: 1px 1px 5px rgba(0, 0, 0, 0.5);
-    text-shadow: 1px 1px 5px rgba(0, 0, 0, 0.5);
     cursor: default;
     transition: 0.3s;
 } .statContainer:hover {
@@ -16,13 +16,12 @@
 .nameStat {
     padding: 0;
     margin: 0;
-    font-weight: bolder;
-    color: white;
+    font-weight: bold;
 }
 
 .baseStat {
     padding: 0;
     margin: 0;
     font-weight: 100;
-    color: azure;
+    color: rgb(94, 94, 94);
 }

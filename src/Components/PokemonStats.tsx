@@ -1,19 +1,18 @@
-import { Container, Row, Col } from 'react-bootstrap'
+import { getNameStatspokemon, PropsStats } from '../ExportFunctions/ExportFunctions'
 import '../Css/PokemonStats.css'
-import { getNameStatspokemon, getPokemonColorByType } from '../ExportFunctions/ExportFunctions'
 
-interface PropsStats {
+interface IProps {
     Hp: number,
-    Name: string,
+    stat: PropsStats,
     Key?: any,
     Color: string
 }
 
-export default function PokemonStats({ Hp, Name, Key, Color }: PropsStats) {
+export default function PokemonStats({ Hp, stat, Key, Color }: IProps) {
     return (
         <>
-            <div key={Key} className='statContainer' style={{backgroundColor: `${getPokemonColorByType(Color)}`}}>
-                <p className='nameStat'>{getNameStatspokemon(Name)}</p>
+            <div key={Key} className='statContainer' style={{color: `${Color}`, border: `2px solid ${Color}`}}>
+                <p className='nameStat'>{getNameStatspokemon(stat)}</p>
                 <p className='baseStat'>{Hp}</p>
             </div>
         </>

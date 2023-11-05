@@ -6,13 +6,14 @@ import InfosPokemonCard from "../Components/InfosPokemonCard"
 import { Divider } from "@mui/material"
 import { Container, Row } from 'react-bootstrap'
 import { AiFillHome } from 'react-icons/ai'
+import PokemonStats from "../Components/PokemonStats"
+
 import '../Css/Profile.css'
 import '../Css/PokemonStats.css'
 import 'bootstrap/dist/css/bootstrap.min.css'
-import PokemonStats from "../Components/PokemonStats"
 
 interface PropsStats {
-  'base_stat': string,
+  base_stat: string,
   stat: any,
 }
 
@@ -32,14 +33,14 @@ export default function Profile() {
   useEffect(() => {
     getSinglePokemon()
   }, [])
-  if (pokemonData.types == undefined) {
+  if (!pokemonData.types) {
     return ' '
   } else {
-    var type1 = pokemonData.types[0].type.name
+    var color = getPokemonColorByType(pokemonData?.types[0]?.type?.name);
   }
 
   return (
-    <div className="bodyProfile" style={{ backgroundColor: `${getPokemonColorByType(type1)}` }}>
+    <div className="bodyProfile" style={{ backgroundColor: `${color}` }}>
       <i className="houseIcon">
         <Link to="/">
           <AiFillHome className="icon" />
@@ -61,29 +62,29 @@ export default function Profile() {
           <Divider style={{ margin: '15px 0' }} role="presentation" component="h4" >Informações</Divider>
           <InfosPokemonCard
             Data={pokemonData}
-            Color={type1}
+            Color={color}
           />
           <Divider style={{ margin: '15px 0' }} role="presentation" component="h4" >Status</Divider>
           {pokemonData.stats.map((stat: PropsStats, key: unknown) => {
             return (
               <PokemonStats
-                Name={stat.stat.name}
+                stat={stat.stat.name}
                 Hp={getStatsPokemon(stat.base_stat)}
                 Key={key}
-                Color={type1}
+                Color={color}
               />
             )
           })}
-          <Divider style={{ margin: '15px 0' }} role="presentation" component="h4" >Ataques Possíveis</Divider>
+          <Divider style={{ margin: '15px 0' }} role="presentation" component="h4">Ataques Possíveis</Divider>
           <div className="abillitiesContainer">
             {pokemonData.moves.map((a: any) => {
-              return <div style={{ backgroundColor: `${getPokemonColorByType(type1)}` }} className="possibleAbilities" >{a.move.name}</div>
+              return <div style={{ border: `2px solid ${color}`, color: `${color}` }} className="possibleAbilities">{a.move.name}</div>
             })}
           </div>
-          <Divider style={{ margin: '15px 0' }} role="presentation" component="h4" >Outras Versões</Divider>
+          <Divider style={{ margin: '15px 0' }} role="presentation" component="h4">Outras Versões</Divider>
           <Container fluid style={{ textAlign: 'center' }}>
             <Row>
-              {getOthersVersionPokemons(pokemonData, getPokemonColorByType(type1))}
+              {getOthersVersionPokemons(pokemonData, color)}
             </Row>
           </Container>
 
